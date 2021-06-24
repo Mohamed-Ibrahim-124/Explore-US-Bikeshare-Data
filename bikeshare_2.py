@@ -179,6 +179,49 @@ def user_stats(df):
     print('-'*40)
 
 
+def user_stats(df):
+
+    print('\nCalculating User Stats...\n')
+    start_time = time.time()
+
+    # TO DO: Display counts of user types
+
+    user_types = df['User Type'].value_counts()
+
+    print('User Types:\n', user_types)
+
+    # TO DO: Display counts of gender
+
+    try:
+      gender_types = df['Gender'].value_counts()
+      print('\nGender Types:\n', gender_types)
+    except KeyError:
+      print("\nGender Types:\nNo data available for this month.")
+
+    # TO DO: Display earliest, most recent, and most common year of birth
+
+    try:
+      Earliest_Year = df['Birth Year'].min()
+      print('\nEarliest Year:', Earliest_Year)
+    except KeyError:
+      print("\nEarliest Year:\nNo data available for this month.")
+
+    try:
+      Most_Recent_Year = df['Birth Year'].max()
+      print('\nMost Recent Year:', Most_Recent_Year)
+    except KeyError:
+      print("\nMost Recent Year:\nNo data available for this month.")
+
+    try:
+      Most_Common_Year = df['Birth Year'].value_counts().idxmax()
+      print('\nMost Common Year:', Most_Common_Year)
+    except KeyError:
+      print("\nMost Common Year:\nNo data available for this month.")
+
+    print("\nThis took %s seconds." % (time.time() - start_time))
+    print('-'*40)
+
+
 def main():
     while True:
         city, month, day = get_filters()
