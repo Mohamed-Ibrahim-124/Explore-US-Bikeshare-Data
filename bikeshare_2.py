@@ -219,6 +219,18 @@ def user_stats(df):
       print("\nMost Common Year:\nNo data available for this month.")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
+    i=0
+
+    while True:
+        raw = input('\nWould you like to see some raw data? Enter yes or no.\n')
+        if raw.lower() == 'yes':
+
+           #  df.style
+            print(df[i:i + 5])
+            i = i + 5
+        else:
+            break
+
     print('-'*40)
 
 
